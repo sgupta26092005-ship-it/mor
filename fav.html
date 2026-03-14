@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Favorites</title>
+    <script type="module">
+        import { loadFavorites, removeFromFavorites } from './src/favorites.js';
+        
+        async function displayFavorites() {
+            const favContainer = document.getElementById('favorites-container');
+            const items = await loadFavorites();
+            
+            favContainer.innerHTML = items.length ? items.map(item => `
+                <div class="favorite-item">
+                    <img src="${item.image}" alt="${item.name}">
+                    <h3>${item.name}</h3>
+                    <p>${item.price}</p>
+                    <button onclick="removeFromFavorites('${item.id}')">Remove</button>
+                </div>
+            `).join('') : '<p>No favorites yet</p>';
+        }
+
+        // Load favorites when page loads
+        document.addEventListener('DOMContentLoaded', displayFavorites);
+    </script>
+</head>
+<body>
+    <div id="favorites-container"></div>
+</body>
+</html>

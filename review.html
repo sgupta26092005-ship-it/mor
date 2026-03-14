@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Write a Review - Mor</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="stylesheet" href="mor.css">
+    <style>
+        /* The body style is now handled by mor.css */
+        .review-page-main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 130px); /* Adjust for header/footer */
+            padding: 2rem;
+            margin-top: 65px; /* Adjust for fixed header */
+        }
+
+        /* Reusing the review modal content style for a consistent look */
+        .review-page-content {
+            background: #2b2b2b; /* Dark background to match theme */
+            border: 1px solid #555;
+            padding: 2rem 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .review-page-content h3 {
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            color: #fff; /* Light text for dark theme */
+        }
+
+        /* Back button */
+        .back-link {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            font-size: 1.5rem;
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .back-link:hover {
+            color: #333;
+        }
+
+        /* Style for the textarea to match other inputs */
+        .review-page-content textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #555555;
+            background-color: #444444;
+            color: #ffffff;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            resize: vertical;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <button class="hamburger-menu" aria-label="Open Menu"><i class="fas fa-bars"></i></button>
+            <a href="index.html" class="logo"><img src="logo.jpg" alt="Mor Logo" class="logo-img" loading="lazy"></a>
+            <div class="nav-links-container"> 
+                <button class="close-menu" aria-label="Close Menu"><i class="fas fa-times"></i></button> 
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="index.html#collections">Collections</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li class="mobile-only-link" id="mobile-auth-link-container">
+                        <!-- This will be dynamically replaced by JS -->
+                        <button class="nav-link-button" id="mobile-login-link" onclick="window.location.href='login.html'">
+                            <i class="fas fa-user"></i> Login
+                        </button>
+                    </li>
+                    <li class="mobile-only-link"><button class="nav-link-button" id="mobile-favorites-link"><i class="fas fa-heart"></i> Favorites</button></li>
+                </ul>
+            </div>
+             <div class="nav-actions">
+                <a href="cart.html" class="cart-btn" aria-label="Shopping Cart">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" style="display: none;">0</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="review-page-main">
+        <div class="review-page-content">
+            <a href="javascript:history.back()" class="back-link" aria-label="Go back">&times;</a>
+            <h3>Write a Review</h3>
+            <form id="review-form">
+                <div class="form-group">
+                    <label>Your Rating</label>
+                    <div class="star-rating-input" id="star-rating-input">
+                        <i class="far fa-star" data-value="1"></i><i class="far fa-star" data-value="2"></i><i class="far fa-star" data-value="3"></i><i class="far fa-star" data-value="4"></i><i class="far fa-star" data-value="5"></i>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="review-text">Your Review</label>
+                    <textarea id="review-text" rows="5" placeholder="Tell us what you think..."></textarea>
+                </div>
+                <button type="submit" class="cta-btn">Submit Review</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Login Required Modal -->
+    <div id="login-required-modal" class="modal-overlay" style="display: none;">
+        <div class="login-required-modal-content">
+            <span class="modal-close login-required-modal-close">&times;</span>
+            <h3>Login Required</h3>
+            <p>You need to be logged in to use this feature.</p>
+            <button class="cta-btn" id="login-now-btn">Login Now</button>
+        </div>
+    </div>
+
+    <!-- Component Placeholders for mor.js -->
+    <div class="overlay"></div>
+    <div id="favorites-popup" class="favorites-popup">
+        <div class="favorites-header">
+            <h3>Your Favorites</h3>
+            <button class="close-favorites-btn" aria-label="Close Favorites"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="favorites-content">
+            <div class="favorites-empty">
+                <i class="far fa-heart"></i>
+                <p>You have no favorites yet</p>
+                <button class="cta-btn start-browsing-btn">Start Browsing</button>
+            </div>
+            <div class="favorites-items" style="display: none;"></div>
+        </div>
+    </div>
+
+    <!-- Notification Toast placeholder -->
+    <div id="notification-toast" class="notification-toast"></div>
+
+    <footer class="footer" id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Mor</h4>
+                <p>Premium fashion for the modern woman. Discover elegance, embrace style, and express your unique personality with our curated collections.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <p><a href="index.html#home">Home</a></p>
+                <p><a href="index.html#categories">Categories</a></p>
+                <p><a href="index.html#collections">Collections</a></p>
+                <p><a href="index.html#about">About Us</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Customer Care</h4>
+                <p><a href="#">Size Guide</a></p>
+                <p><a href="#">Shipping Info</a></p>
+                <p><a href="#">Returns & Exchanges</a></p>
+                <p><a href="#">Contact Support</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <p><a href="#">Instagram</a></p>
+                <p><a href="#">Facebook</a></p>
+                <p><a href="#">Twitter</a></p>
+                <p><a href="#">Newsletter</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Mor Fashion. All rights reserved. | <a href="privacy.html" style="color: inherit;">Privacy Policy</a> | <a href="terms.html" style="color: inherit;">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <script src="mor.js"></script>
+    <script type="module" src="./src/review.js"></script>
+    <script type="module">
+      import { addReview } from './src/review.js';
+      // Submit handler
+      const reviewForm = document.getElementById('review-form');
+      reviewForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!currentRating) {
+          if (window.showToast) window.showToast('Please select a rating.', 'fa-exclamation-circle');
+          return;
+        }
+        const params = new URLSearchParams(window.location.search);
+        const productId = params.get('product');
+        if (!productId) {
+            if (window.showToast) window.showToast('Could not find product to review.', 'fa-exclamation-triangle');
+            return;
+        }
+        const comment = document.getElementById('review-text').value.trim();
+        // Ensure user is logged in before submitting
+        const loggedIn = (typeof window.isUserLoggedIn === 'function') ? window.isUserLoggedIn() : (localStorage.getItem('mor_user_loggedin') === 'true');
+        if (!loggedIn) {
+          if (window.openLoginRequiredModal) {
+            window.openLoginRequiredModal('Please login to submit a review.');
+          } else {
+            window.location.href = `login.html?redirect=${encodeURIComponent(window.location.href)}`;
+          }
+          return;
+        }
+
+        const ok = await addReview(productId, { rating: currentRating, comment });
+        if (ok) {
+          if (window.showToast) window.showToast('Thank you for your review!', 'fa-check-circle');
+          reviewForm.reset();
+          currentRating = 0;
+          stars.forEach(s => s.className = 'far fa-star');
+          setTimeout(() => {
+            // Go back to the previous page
+            if (document.referrer) {
+              window.location.href = document.referrer;
+            } else {
+              window.location.href = 'shop.html'; // Fallback
+            }
+          }, 800);
+        } else {
+          if (window.showToast) window.showToast('Failed to submit review.', 'fa-times-circle');
+        }
+      });
+
+      // Star rating interactions
+      const starRatingContainer = document.getElementById('star-rating-input');
+      const stars = starRatingContainer.querySelectorAll('.fa-star');
+      let currentRating = 0;
+
+      stars.forEach(star => {
+        const val = parseInt(star.dataset.value);
+        star.addEventListener('mouseover', () => {
+          stars.forEach((s, i) => s.className = i < val ? 'fas fa-star' : 'far fa-star');
+        });
+        star.addEventListener('mouseout', () => {
+          stars.forEach((s, i) => s.className = i < currentRating ? 'fas fa-star selected' : 'far fa-star');
+        });
+        star.addEventListener('click', () => {
+          currentRating = val;
+          stars.forEach((s, i) => s.className = i < currentRating ? 'fas fa-star selected' : 'far fa-star');
+        });
+      });
+    </script>
+</body>
+</html>

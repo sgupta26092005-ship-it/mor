@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Co-ord Sets - Mor</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="stylesheet" href="mor.css">
+    <link rel="stylesheet" href="cartPopup.css">
+    <style>
+        .shop-header { text-align: center; padding: 2rem; background: #3a3a3a; }
+        .shop-header h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: #ffffff; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 2rem; max-width: 1400px; margin: 2rem auto; padding: 0 2rem; }
+        @media (max-width: 768px) {
+            .product-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; padding: 0 1rem; }
+            .shop-header h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <button class="hamburger-menu" aria-label="Open Menu"><i class="fas fa-bars"></i></button>
+            <div class="nav-left">
+                <a href="index.html" class="logo"><img src="logo.jpg" alt="Mor Logo" class="logo-img" loading="lazy"></a>
+                <div class="nav-links-container"> 
+                    <button class="close-menu" aria-label="Close Menu"><i class="fas fa-times"></i></button> 
+                    <ul class="nav-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="#categories">Categories</a></li>
+                        <li><a href="#collections">Collections</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li class="mobile-only-link"><button class="nav-link-button" id="mobile-favorites-link"><i class="far fa-heart"></i> Favorites</button></li>
+                        <li class="mobile-only-link" id="mobile-auth-link-container">
+                            <!-- This will be dynamically replaced by JS -->
+                            <a href="login.html" class="nav-link-button" id="mobile-login-link"><i class="fas fa-user"></i> Login</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="nav-actions">
+                <a href="search.html" class="search-btn" aria-label="Search"><i class="fas fa-search"></i></a>
+                <a href="cart.html" class="nav-action-link cart-link cart-btn" aria-label="Shopping Cart"><i class="fas fa-shopping-bag"></i><span class="cart-count" style="display: none;">0</span></a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="shop-header">
+            <h1>Co-ord Sets</h1>
+        </section>
+
+        <section id="product-grid" class="product-grid">
+            <!-- Products will be injected here by JS -->
+        </section>
+    </main>
+
+    <!-- Component Placeholders & Modals -->
+    <div id="login-required-modal" class="modal-overlay" style="display: none;">
+        <div class="login-required-modal-content">
+            <span class="modal-close login-required-modal-close">&times;</span>
+            <h3>Login Required</h3>
+            <p>You need to be logged in to use this feature.</p>
+            <button class="cta-btn" id="login-now-btn">Login Now</button>
+        </div>
+    </div>
+    <div class="overlay"></div>
+    <div id="cart-popup" class="cart-popup">
+        <div class="cart-header"><h3>Your Cart</h3><button class="close-cart-btn" aria-label="Close Cart"><i class="fas fa-times"></i></button></div>
+        <div class="cart-content"><div class="cart-empty"><i class="fas fa-shopping-bag"></i><p>Your cart is empty</p><button class="cta-btn continue-shopping-btn">Continue Shopping</button></div><div class="cart-items" style="display: none;"></div></div>
+        <div class="cart-footer" style="display: none;"><div class="cart-subtotal"><span>Subtotal</span><span id="cart-subtotal-amount">₹0.00</span></div><a href="cart.html" class="cta-btn checkout-btn" style="text-decoration: none; text-align: center; display: block;">Proceed to Checkout</a></div>
+    </div>
+    <div id="favorites-popup" class="favorites-popup">
+        <div class="favorites-header"><h3>Your Favorites</h3><button class="close-favorites-btn" aria-label="Close Favorites"><i class="fas fa-times"></i></button></div>
+        <div class="favorites-content"><div class="favorites-empty"><i class="far fa-heart"></i><p>You have no favorites yet</p><button class="cta-btn start-browsing-btn">Start Browsing</button></div><div class="favorites-items" style="display: none;"></div></div>
+    </div>
+    <div id="notification-toast" class="notification-toast"></div>
+
+    <footer class="footer" id="contact">
+        <div class="footer-content">
+            <div class="footer-section"><h4>Mor</h4><p>Premium fashion for the modern woman. Discover elegance, embrace style, and express your unique personality with our curated collections.</p></div>
+            <div class="footer-section"><h4>Quick Links</h4><p><a href="index.html#home">Home</a></p><p><a href="index.html#categories">Categories</a></p><p><a href="index.html#collections">Collections</a></p><p><a href="index.html#about">About Us</a></p></div>
+            <div class="footer-section"><h4>Customer Care</h4><p><a href="#">Size Guide</a></p><p><a href="#">Shipping Info</a></p><p><a href="#">Returns & Exchanges</a></p><p><a href="#">Contact Support</a></p></div>
+            <div class="footer-section"><h4>Connect</h4><div class="social-icons"><a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a><a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a><a href="#" aria-label="Newsletter"><i class="fas fa-envelope"></i></a></div></div>
+        </div>
+        <div class="footer-bottom"><p>&copy; 2025 Mor Fashion. All rights reserved. | <a href="privacy.html" style="color: inherit;">Privacy Policy</a> | <a href="terms.html" style="color: inherit;">Terms of Service</a></p></div>
+    </footer>
+
+    <script src="products.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const productGrid = document.getElementById('product-grid');
+
+            const renderProducts = (productsToRender) => {
+                productGrid.innerHTML = '';
+                productsToRender.forEach(product => {
+                    const sizes = product.sizes ? product.sizes.join(',') : 'M';
+                    const productCardHTML = `
+                        <div class="product-item-wrapper no-info" data-page-url="${product.pageUrl}" data-id="${product.id}" style="cursor: pointer;">
+                            <div class="product-card" data-id="${product.id}" data-name="${product.name}" data-price="${product.price}" data-img-src="${product.imgSrc}" data-page-url="${product.pageUrl}" data-sizes="${sizes}">
+                                <div class="product-image-container"><img src="${product.imgSrc}" alt="${product.name}" loading="lazy">
+                                    <div class="product-favorite-icon"><i class="far fa-heart"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    productGrid.innerHTML += productCardHTML;
+                });
+
+                setTimeout(() => {
+                    document.querySelectorAll('.product-item-wrapper').forEach((card, index) => {
+                        card.style.transitionDelay = `${index * 30}ms`;
+                        card.classList.add('animate-fade-in', 'active');
+                    });
+
+                    document.querySelectorAll('.product-favorite-icon').forEach(icon => {
+                        const card = icon.closest('.product-card');
+                        const productId = card.dataset.id;
+                        const productData = window.allProducts.find(p => p.id === productId);
+
+                        if (window.isFavorited && productData && window.isFavorited(productData)) {
+                            icon.innerHTML = '<i class="fas fa-heart"></i>';
+                        }
+                    });
+                }, 10);
+            };
+
+            if (window.allProducts) {
+                const filteredProducts = window.allProducts.filter(p => 
+                    p.name.toLowerCase().includes('co-ord') || p.name.toLowerCase().includes('set')
+                );
+                renderProducts(filteredProducts);
+            }
+        });
+    </script>
+    <script src="mor.js"></script>
+    <script type="module" src="./src/cart.js"></script>
+    <script type="module" src="./src/fav.js"></script>
+</body>
+</html>

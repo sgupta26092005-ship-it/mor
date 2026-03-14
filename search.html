@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search - Mor</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="stylesheet" href="mor.css">
+    <style>
+        .search-page-main {
+            max-width: 800px;
+            margin: 85px auto 4rem auto; /* Adjust for fixed header */
+            padding: 2rem;
+            text-align: center;
+        }
+        .search-page-main h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+        .search-bar-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .search-input {
+            width: 100%;
+            padding: 1rem 3.5rem 1rem 1.5rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            border: 1px solid #555;
+            background-color: #444;
+            color: #fff;
+        }
+        .search-bar-container .search-btn {
+            position: absolute;
+            right: 6px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45px;
+            height: 45px;
+            background: #555;
+            border: none;
+        }
+        .search-bar-container .search-btn:hover {
+            background: #666;
+            transform: translateY(-50%) scale(1.05);
+        }
+        .product-grid{
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <button class="hamburger-menu" aria-label="Open Menu"><i class="fas fa-bars"></i></button>
+            <div class="nav-left">
+                <a href="index.html" class="logo"><img src="logo.jpg" alt="Mor Logo" class="logo-img" loading="lazy"></a>
+                <div class="nav-links-container"> 
+                    <button class="close-menu" aria-label="Close Menu"><i class="fas fa-times"></i></button> 
+                    <ul class="nav-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="#categories">Categories</a></li>
+                        <li><a href="#collections">Collections</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li class="mobile-only-link"><button class="nav-link-button" id="mobile-favorites-link"><i class="far fa-heart"></i> Favorites</button></li>
+                        <li class="mobile-only-link" id="mobile-auth-link-container">
+                        
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="nav-actions">
+                <a href="search.html" class="search-btn" aria-label="Search"><i class="fas fa-search"></i></a>
+                <a href="cart.html" class="nav-action-link cart-link cart-btn" aria-label="Shopping Cart"><i class="fas fa-shopping-bag"></i><span class="cart-count" style="display: none;">0</span></a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="search-page-main">
+        <h1>Search Our Store</h1>
+        <div class="search-bar-container">
+            <input type="search" class="search-input" placeholder="Search for products...">
+            <button class="search-btn" aria-label="Search">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        
+        <!-- Search results will be displayed here -->
+        <section id="search-results-grid" class="product-grid" style="margin-top: 3rem; margin-left: auto; margin-right: auto;"></section>
+        <p id="no-results-message" style="display: none; margin-top: 2rem; font-size: 1.1rem;">No products found matching your search.</p>
+    </main>
+
+    <footer class="footer" id="contact">
+      <div class="footer-bottom">
+            <p>&copy; 2025 Mor Fashion. All rights reserved. | <a href="privacy.html" style="color: inherit;">Privacy Policy</a> | <a href="terms.html" style="color: inherit;">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <script src="products.js"></script>
+    <script src="mor.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.querySelector('.search-input');
+            const searchBtn = document.querySelector('.search-bar-container .search-btn');
+            const resultsGrid = document.getElementById('search-results-grid');
+            const noResultsMessage = document.getElementById('no-results-message');
+
+            const renderProducts = (productsToRender) => {
+                resultsGrid.innerHTML = ''; // Clear existing results
+                noResultsMessage.style.display = productsToRender.length === 0 ? 'block' : 'none';
+
+                productsToRender.forEach(product => {
+                    const productCardHTML = `
+                        <div class="product-item-wrapper" data-page-url="${product.pageUrl}" style="cursor: pointer;">
+                            <div class="product-card" data-name="${product.name}" data-price="${product.price}" data-img-src="${product.imgSrc}" data-page-url="${product.pageUrl}">
+                                <div class="product-image-container"><img src="${product.imgSrc}" alt="${product.name}" loading="lazy">
+                                    <div class="product-favorite-icon"><i class="far fa-heart"></i></div>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h4 class="product-name">${product.name}</h4><p class="product-price">${product.price}</p>
+                            </div>
+                        </div>
+                    `;
+                    resultsGrid.innerHTML += productCardHTML;
+                });
+
+                // Add navigation for product cards
+                document.querySelectorAll('.product-item-wrapper').forEach(wrapper => {
+                    wrapper.addEventListener('click', (e) => { 
+                        if (!e.target.closest('.product-favorite-icon')) {
+                            window.location.href = wrapper.dataset.pageUrl;
+                        }
+                    });
+                });
+            };
+
+            const performSearch = () => {
+                const searchTerm = searchInput.value.trim().toLowerCase();
+                if (!searchTerm) {
+                    renderProducts([]); // Clear results if search is empty
+                    return;
+                }
+                const filteredProducts = window.allProducts.filter(product => 
+                    product.name.toLowerCase().includes(searchTerm)
+                );
+                renderProducts(filteredProducts);
+            };
+
+            searchBtn.addEventListener('click', performSearch);
+            searchInput.addEventListener('keyup', (event) => {
+                if (event.key === 'Enter') {
+                    performSearch();
+                }
+            });
+        });
+    </script>
+    <script type="module" src="./src/cart.js"></script>
+    <script type="module" src="./src/fav.js"></script>
+
+</body>
+</html>

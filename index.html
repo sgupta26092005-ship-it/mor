@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mor - Premium Fashion for men</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="stylesheet" href="mor.css">
+</head>
+<link rel="stylesheet" href="offer.css">
+<body>
+    <!-- Scrolling Offer Banner -->
+    <div class="offer-banner" id="scrolling-offer-banner">
+        <div class="offer-text-container">
+            <div class="offer-text">
+                <span> 🔥 Big Festive Sale! Flat 50% OFF on all Kurtis | Free Shipping Today Only!</span>
+                <span>🔥 Big Festive Sale! Flat 50% OFF on all Kurtis | Free Shipping Today Only!</span>
+            </div>
+        </div>
+        <button class="close-offer-btn" id="close-offer-btn" aria-label="Close offer banner">&times;</button>
+    </div>
+    <header class="header">
+        <nav class="nav">
+            <button class="hamburger-menu" aria-label="Open Menu"><i class="fas fa-bars"></i></button>
+            <div class="nav-left">
+                <a href="#home" class="logo"><img src="logo.jpg" alt="Mor Logo" class="logo-img" loading="lazy"></a>
+                <div class="nav-links-container"> 
+                    <button class="close-menu" aria-label="Close Menu"><i class="fas fa-times"></i></button> 
+                    <ul class="nav-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="#categories">Categories</a></li>
+                        <li><a href="#collections">Collections</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li class="mobile-only-link"><a href="cart.html" class="nav-link-button"><i class="fas fa-shopping-bag"></i> Cart</a></li>
+                        <li class="mobile-only-link"><button class="nav-link-button" id="mobile-favorites-link"><i class="far fa-heart"></i> Favorites</button></li>
+                        <li class="mobile-only-link" id="mobile-auth-link-container">
+                            <!-- This will be dynamically replaced by JS -->
+                            <a href="login.html" class="nav-link-button" id="mobile-login-link"><i class="fas fa-user"></i> Login</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="nav-actions">
+                <a href="search.html" class="search-btn" aria-label="Search"><i class="fas fa-search"></i></a>
+                <a href="cart.html" class="nav-action-link cart-link cart-btn" aria-label="Shopping Cart"><i class="fas fa-shopping-bag"></i><span class="cart-count" style="display: none;">0</span></a>
+            </div>
+        </nav>
+    </header>
+
+    <main style="margin-top: 105px; transition: margin-top 0.4s ease-in-out;">
+        <section class="promo-section" id="home">
+            <div class="promo-slider-container">
+                <img src="p1.jpg" alt="Promo Image 1" class="promo-img active" loading="lazy">
+                <img src="p2.jpg" alt="Promo Image 2" class="promo-img" loading="lazy">
+                <img src="p3.jpg" alt="Promo Image 3" class="promo-img" loading="lazy">
+                <div class="promo-overlay"></div>
+                <div class="promo-content">
+                    <a href="shop.html" class="cta-btn">Explore Now</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="categories-section" id="categories">
+            <h2 class="section-title">Shop by Categories</h2>
+            <div class="categories-scroll">
+                <a href="coord.html" class="category-card animate-fade-in" style="background-image: url('/photos/19A.jpg'); transition-delay: 0.1s; text-decoration: none;">
+                    <div class="category-content">
+                        <h3>Co-ord Sets</h3>
+                        <p>Effortless style in matching sets.</p>
+                    </div>
+                </a>
+                <a href="indo.html" class="category-card animate-fade-in " style="background-image: url('photos/17A.jpg'); transition-delay: 0.2s; text-decoration: none;">
+                    <div class="category-content">
+                        <h3>Indo Western</h3>
+                    </div>
+                </a>
+                <a href="drape.html" class="category-card animate-fade-in" style="background-image: url('photos/16A.jpg'); transition-delay: 0.3s; text-decoration: none;">
+                    <div class="category-content">
+                        <h3>Drape Dresses</h3>
+                        <p>Elegant designs for every occasion.</p>
+                    </div>
+                </a>
+                <a href="kurti.html" class="category-card animate-fade-in" style="background-image: url('photos/1A.jpg'); transition-delay: 0.4s; text-decoration: none;">
+                    <div class="category-content">
+                        <h3>Kurti Suits</h3>
+                    </div>
+                </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-section" id="collections">
+            <div class="featured-header">
+                <h2 class="section-title">Featured In</h2>
+            </div>
+            <div class="related-products-section">
+                <div class="featured-category featured-category-runway" style="transition-delay: 0.2s;">
+                    <h3>Best Sellers This Week</h3>
+                    <div class="featured-scroll">
+                        <div class="product-item-wrapper no-info animate-fade-in">
+                            <div class="product-card" data-name="Azure Blue Kaftan" data-price="₹1,999" data-sizes="Free Size" data-material="Silk Blend" data-img-src="photos/16A.jpg" data-gallery-images="photos/16B.jpg,photos/16C.jpg,photos/16D.jpg" data-page-url="product.html?id=16">
+                                <div class="product-image-container"><img src="photos/16A.jpg" alt="Azure Blue Kaftan" loading="lazy">
+                                    <div class="product-favorite-icon"><i class="far fa-heart"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-item-wrapper no-info animate-fade-in">
+                            <div class="product-card" data-name="Golden Mustard Palazzo Set" data-price="₹2,199" data-sizes="M, L, XL" data-material="Viscose" data-img-src="photos/17A.jpg" data-gallery-images="photos/17B.jpg,photos/17C.jpg,photos/17D.jpg" data-page-url="product.html?id=17">
+                                <div class="product-image-container"><img src="photos/17A.jpg" alt="Golden Mustard Palazzo Set" loading="lazy">
+                                    <div class="product-favorite-icon"><i class="far fa-heart"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-item-wrapper no-info animate-fade-in">
+                            <div class="product-card" data-name="Pastel Green One-Shoulder" data-price="₹1,899" data-sizes="S, M, L" data-material="Crepe" data-img-src="photos/18A.jpg" data-gallery-images="photos/18B.jpg,photos/18C.jpg,photos/18D.jpg" data-page-url="product.html?id=18">
+                                <div class="product-image-container"><img src="photos/18A.jpg" alt="Pastel Green One-Shoulder" loading="lazy">
+                                    <div class="product-favorite-icon"><i class="far fa-heart"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-item-wrapper no-info animate-fade-in">
+                            <div class="product-card" data-name="Zebra Print Co-ord Set" data-price="₹1,750" data-sizes="S, M, L" data-material="Poly-Crepe" data-img-src="photos/19A.jpg" data-gallery-images="photos/19B.jpg,photos/19C.jpg,photos/19D.jpg" data-page-url="product.html?id=19">
+                                <div class="product-image-container"><img src="photos/19A.jpg" alt="Zebra Print Co-ord Set" loading="lazy">
+                                    <div class="product-favorite-icon"><i class="far fa-heart"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-item-wrapper no-info animate-fade-in">
+                            <div class="product-card" data-name="Fuchsia Pink Ikat Kurti" data-price="₹1,550" data-sizes="S, M, L, XL" data-material="Viscose Rayon" data-img-src="photos/20A.jpg" data-gallery-images="photos/20B.jpg,photos/20C.jpg,photos/20D.jpg" data-page-url="product.html?id=20">
+                                <div class="product-image-container"><img src="photos/20A.jpg" alt="Fuchsia Pink Ikat Kurti" loading="lazy">
+                                    <div class="product-favorite-icon"><i class="far fa-heart"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-item-wrapper no-info animate-fade-in">
+                            <div class="product-card" data-name="Bohemian White Kaftan" data-price="₹2,299" data-sizes="Free Size" data-material="Cotton" data-img-src="photos/21A.jpg" data-gallery-images="photos/21B.jpg,photos/21C.jpg,photos/21D.jpg" data-page-url="product.html?id=21">
+                                <div class="product-image-container"><img src="photos/21A.jpg" alt="Bohemian White Kaftan" loading="lazy">
+                                    <div class="product-favorite-icon"><i class="far fa-heart"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="best-sellers.html" class="view-all-btn" style="transition-delay: 0.5s;">View All</a>
+                </div>
+                <div class="featured-category featured-category-seasonal" style="transition-delay: 0.4s;">
+                    <h3>Seasonal Favorites</h3>
+                    <div class="featured-scroll">
+                        <div class="product-item-wrapper no-info animate-fade-in">
+                            <div class="product-card" data-name="Black Chikankari Kurti" data-price="₹1,499" data-sizes="S, M, L, XL" data-material="Cotton" data-img-src="photos/1A.jpg" data-gallery-images="photos/1B.jpg,photos/1C.jpg" data-page-url="product.html?id=1">
+                                <div class="product-image-container"><img src="photos/1A.jpg" alt="Black Chikankari Kurti" loading="lazy">
+                                    <div class="product-favorite-icon"><i class="far fa-heart"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-item-wrapper no-info animate-fade-in">
+                            <div class="product-card" data-name="Stylish Rayon Kurti" data-price="₹1,399" data-sizes="S, M, L" data-material="Rayon" data-img-src="photos/2A.jpg" data-gallery-images="photos/2B.jpg" data-page-url="product.html?id=2">
+                                <div class="product-image-container"><img src="photos/2A.jpg" alt="Stylish Rayon Kurti" loading="lazy">
+                                    <div class="product-favorite-icon"><i class="far fa-heart"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-item-wrapper no-info animate-fade-in">
+                            <div class="product-card" data-name="Elegant Georgette Kurti" data-price="₹1,599" data-sizes="S, M, L" data-material="Georgette" data-img-src="photos/3A.jpg" data-gallery-images="photos/3B.jpg,photos/3C.jpg,photos/3D.jpg,photos/3E.jpg" data-page-url="product.html?id=3">
+                                <div class="product-image-container"><img src="photos/3A.jpg" alt="Elegant Georgette Kurti" loading="lazy">
+                                    <div class="product-favorite-icon"><i class="far fa-heart"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-item-wrapper no-info animate-fade-in">
+                            <div class="product-card" data-name="Classic Viscose Kurta" data-price="₹1,899" data-sizes="S, M, L, XL, XXL" data-material="Viscose" data-img-src="photos/26A.jpg" data-gallery-images="photos/26A.jpg,photos/26B.jpg,photos/26C.jpg" data-page-url="product.html?id=26">
+                                <div class="product-image-container"><img src="photos/26A.jpg" alt="Classic Viscose Kurta" loading="lazy">
+                                    <div class="product-favorite-icon"><i class="far fa-heart"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-item-wrapper no-info animate-fade-in">
+                            <div class="product-card" data-name="Green Floral Kurti" data-price="₹1,199" data-sizes="S, M, L" data-material="Cotton" data-img-src="photos/5A.jpg" data-gallery-images="photos/5A.jpg,photos/5B.jpg" data-page-url="product.html?id=5">
+                                <div class="product-image-container"><img src="photos/5A.jpg" alt="Green Floral Kurti" loading="lazy">
+                                    <div class="product-favorite-icon"><i class="far fa-heart"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-item-wrapper no-info animate-fade-in">
+                            <div class="product-card" data-name="Red Printed Kurti" data-price="₹1,299" data-sizes="S, M, XL" data-material="Rayon" data-img-src="photos/6A.jpg" data-gallery-images="photos/6A.jpg,photos/6B.jpg,photos/6C.jpg" data-page-url="product.html?id=6">
+                                <div class="product-image-container"><img src="photos/6A.jpg" alt="Red Printed Kurti" loading="lazy">
+                                    <div class="product-favorite-icon"><i class="far fa-heart"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="shop.html" class="view-all-btn" style="transition-delay: 0.5s;">View All</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="hero">
+            <video autoplay muted loop playsinline class="hero-bg-video">
+                <source src="v1.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1>MOR</h1>
+                <p>Where Elegance Meets Excellence</p>
+                <a href="shop.html" class="cta-btn" id="hero-shop-now">Shop Now</a>
+            </div>
+        </section>
+
+        <section class="featured-section" id="trending-now">
+            <div class="featured-header">
+                <h2 class="section-title">Trending Now</h2>
+            </div>
+            <div class="featured-category" style="transition-delay: 0.2s;">
+                <div class="featured-scroll">
+                    <div class="product-item-wrapper no-info animate-fade-in">
+                        <div class="product-card" data-name="Blue Casual Kurti" data-price="₹1,399" data-sizes="S, M, L, XL" data-material="Viscose" data-img-src="photos/8A.jpg" data-gallery-images="photos/8B.jpg,photos/8C.jpg,photos/8D.jpg" data-page-url="product.html?id=8">
+                            <div class="product-image-container"><img src="photos/8A.jpg" alt="Blue Casual Kurti" loading="lazy">
+                                <div class="product-favorite-icon"><i class="far fa-heart"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-item-wrapper no-info animate-fade-in">
+                        <div class="product-card" data-name="Navy Blue Kurti Set" data-price="₹1,799" data-sizes="M, L, XL" data-material="Silk Blend" data-img-src="photos/9A.jpg" data-gallery-images="photos/9B.jpg,photos/9C.jpg" data-page-url="product.html?id=9">
+                            <div class="product-image-container"><img src="photos/9A.jpg" alt="Navy Blue Kurti Set" loading="lazy">
+                                <div class="product-favorite-icon"><i class="far fa-heart"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-item-wrapper no-info animate-fade-in">
+                        <div class="product-card" data-name="Maroon Velvet Kurti" data-price="₹2,499" data-sizes="S, M, L" data-material="Velvet" data-img-src="photos/10A.jpg" data-gallery-images="photos/10B.jpg,photos/10C.jpg,photos/10D.jpg" data-page-url="product.html?id=10">
+                            <div class="product-image-container"><img src="photos/10A.jpg" alt="Maroon Velvet Kurti" loading="lazy">
+                                <div class="product-favorite-icon"><i class="far fa-heart"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-item-wrapper no-info animate-fade-in">
+                        <div class="product-card" data-name="Light Green Kurti" data-price="₹1,450" data-sizes="S, M, L" data-material="Cotton" data-img-src="photos/11A.jpg" data-gallery-images="photos/11B.jpg" data-page-url="product.html?id=11">
+                            <div class="product-image-container"><img src="photos/11A.jpg" alt="Light Green Kurti" loading="lazy">
+                                <div class="product-favorite-icon"><i class="far fa-heart"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-item-wrapper no-info animate-fade-in">
+                        <div class="product-card" data-name="Purple Silk Kurti" data-price="₹1,999" data-sizes="M, L, XL" data-material="Silk" data-img-src="photos/12A.jpg" data-gallery-images="photos/12B.jpg" data-page-url="product.html?id=12">
+                            <div class="product-image-container"><img src="photos/12A.jpg" alt="Purple Silk Kurti" loading="lazy">
+                                <div class="product-favorite-icon"><i class="far fa-heart"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-item-wrapper no-info animate-fade-in">
+                        <div class="product-card" data-name="Royal Blue Silk Saree" data-price="₹2,999" data-sizes="Free Size" data-material="Silk" data-img-src="photos/13A.jpg" data-gallery-images="photos/13B.jpg" data-page-url="product.html?id=13">
+                            <div class="product-image-container"><img src="photos/13A.jpg" alt="Royal Blue Silk Saree" loading="lazy">
+                                <div class="product-favorite-icon"><i class="far fa-heart"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="shop.html" class="view-all-btn" style="transition-delay: 0.5s;">View All</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Auto-Sliding Info Banner -->
+    <section class="info-banner-section">
+        <div class="info-slider-container">
+            <div class="info-slider">
+                <div class="info-slide"><i class="fas fa-truck"></i><p>Free Delivery HYDERABAD</p></div>
+                <div class="info-slide"><i class="fas fa-headset"></i><p>24 x 7 Customer Support</p></div>
+                <div class="info-slide"><i class="fas fa-ruler-combined"></i><p>Made to Measure</p></div>
+                <div class="info-slide"><i class="fas fa-undo-alt"></i><p>Easy Returns</p></div>
+            </div>
+        </div>
+        <div class="info-dots">
+            <span class="info-dot active" data-slide="0"></span>
+            <span class="info-dot" data-slide="1"></span>
+            <span class="info-dot" data-slide="2"></span>
+            <span class="info-dot" data-slide="3"></span>
+        </div>
+    </section>
+
+    <footer class="footer" id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Mor</h4>
+                <p>Premium fashion for the modern woman. Discover elegance, embrace style, and express your unique personality with our curated collections.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <p><a href="#home">Home</a></p>
+                <p><a href="#categories">Categories</a></p>
+                <p><a href="#collections">Collections</a></p>
+                <p><a href="#about">About Us</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Customer Care</h4>
+                <p><a href="#">Size Guide</a></p>
+                <p><a href="#">Shipping Info</a></p>
+                <p><a href="#">Returns & Exchanges</a></p>
+                <p><a href="#">Contact Support</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Newsletter"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Mor Fashion. All rights reserved. | <a href="privacy.html" style="color: inherit;">Privacy Policy</a> | <a href="terms.html" style="color: inherit;">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <!-- Login Required Modal -->
+    <div id="login-required-modal" class="modal-overlay" style="display: none;">
+        <div class="login-required-modal-content">
+            <span class="modal-close login-required-modal-close">&times;</span>
+            <h3>Login Required</h3>
+            <p>You need to be logged in to use this feature.</p>
+            <button class="cta-btn" id="login-now-btn">Login Now</button>
+        </div>
+    </div>
+
+    <div class="overlay"></div>
+
+    <!-- Favorites Side Panel -->
+    <div id="favorites-popup" class="favorites-popup">
+        <div class="favorites-header">
+            <h3>Your Favorites</h3>
+            <button class="close-favorites-btn" aria-label="Close Favorites"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="favorites-content">
+            <div class="favorites-empty">
+                <i class="far fa-heart"></i>
+                <p>You have no favorites yet</p>
+                <button class="cta-btn start-browsing-btn">Start Browsing</button>
+            </div>
+            <div class="favorites-items" style="display: none;"></div>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919885489448" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-text">WhatsApp</span>
+    </a>
+
+    <!-- Notification Toast -->
+    <div id="notification-toast" class="notification-toast"></div>
+    <script type="module" src="./src/cart.js"></script>
+    <script src="./src/horizontalfade.js"></script>
+    <script src="offer.js"></script>
+    <script src="mor.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileAuthContainer = document.getElementById('mobile-auth-link-container');
+
+            function updateAuthUI() {
+                if (window.isUserLoggedIn && window.isUserLoggedIn()) {
+                    // User is logged in, show Logout button
+                    mobileAuthContainer.innerHTML = `
+                        <a href="logout.html" class="nav-link-button" id="mobile-logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    `;
+                }
+                // If not logged in, the default "Login" link from HTML will be present.
+            }
+
+            // Run on page load
+            updateAuthUI();
+        });
+    </script>
+    <script type="module" src="./src/fav.js"></script>
+</body>
+</html>
+
+
